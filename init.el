@@ -1,7 +1,8 @@
+(debug-on-entry 'package-initialize)
 (setq-default inferior-lisp-program "sbcl")
 
-;; Package manager:
-;; Initialise package and add Melpa repository
+;;; Package manager:
+;;; Initialise package and add Melpa repository
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
@@ -25,24 +26,7 @@
     (unless (package-installed-p package)
       (package-install package))))
 
-(package-initialize)
-(package-refresh-contents)
-
-;; Enable
-(require 'evil)
-
-;; Evil mode
-(evil-mode 1)
-
-;; Configuration
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(show-paren-mode t) ; включить выделение выражений между {},[],()
-(setq show-paren-style 'parenthesis) ; выделить цветом выражения между {},[],()
-
+;;; Packages confguration
 (when (packages-installed-p)
   (require 'smartparens-config)
   (smartparens-global-mode)
@@ -75,6 +59,17 @@
 (setq-default lisp-body-indent 2)
 (setq-default lisp-indent-function 'common-lisp-indent-function)
 
+;;; Configuration
+(evil-mode 1)
+(when (version<= "26.0.50" emacs-version)
+  (global-display-line-numbers-mode))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(show-paren-mode t) ; включить выделение выражений между {},[],()
+(setq show-paren-style 'parenthesis) ; выделить цветом выражения между {},[],()
+
+;;; Generated
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
