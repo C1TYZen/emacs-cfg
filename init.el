@@ -1,4 +1,3 @@
-(debug-on-entry 'package-initialize)
 (setq-default inferior-lisp-program "sbcl")
 
 ;;; Package manager:
