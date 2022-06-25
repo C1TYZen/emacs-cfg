@@ -25,6 +25,17 @@
     (unless (package-installed-p package)
       (package-install package))))
 
+;;; Configuration
+(evil-mode 1)
+(when (version<= "26.0.50" emacs-version)
+  (global-display-line-numbers-mode))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(show-paren-mode t) ; включить выделение выражений между {},[],()
+(setq show-paren-style 'parenthesis) ; выделить цветом выражения между {},[],()
+(load-theme spacemacs-dark)
+
 ;;; Packages confguration
 (when (packages-installed-p)
   (require 'smartparens-config)
@@ -57,16 +68,6 @@
 
 (setq-default lisp-body-indent 2)
 (setq-default lisp-indent-function 'common-lisp-indent-function)
-
-;;; Configuration
-(evil-mode 1)
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(show-paren-mode t) ; включить выделение выражений между {},[],()
-(setq show-paren-style 'parenthesis) ; выделить цветом выражения между {},[],()
 
 ;;; Generated
 (custom-set-variables
