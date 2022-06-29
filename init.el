@@ -8,10 +8,10 @@
 (package-initialize)
 
 (defvar required-packages '(slime
-                            smartparens
-                            auto-complete
+			    smartparens
+			    auto-complete
 			    evil
-			    spacemacs-theme))
+
 
 (defun packages-installed-p ()
   (cl-loop for package in required-packages
