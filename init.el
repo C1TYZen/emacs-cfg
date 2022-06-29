@@ -11,6 +11,7 @@
 			    smartparens
 			    auto-complete
 			    evil
+			    spacemacs-theme))
 
 
 (defun packages-installed-p ()
