@@ -4,7 +4,7 @@
 ;;; Initialise package and add Melpa repository
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (defvar required-packages '(slime
@@ -16,15 +16,14 @@
 
 (defun packages-installed-p ()
   (cl-loop for package in required-packages
-        unless (package-installed-p package)
-          do (cl-return nil)
-        finally (cl-return t)))
+	   unless (package-installed-p package)
+	   do (cl-return nil)
+	   finally (cl-return t)))
 
 (unless (packages-installed-p)
   (package-refresh-contents)
   (dolist (package required-packages)
-    (unless (package-installed-p package)
-      (package-install package))))
+    (unless (package-installed-p package) (package-install package))))
 
 ;;; Configuration
 (evil-mode 1)
@@ -47,13 +46,13 @@
   (setq-default ac-auto-start t)
   (setq-default ac-auto-show-menu t)
   (defvar *sources* (list
-                     'lisp-mode
-                     'ac-source-semantic
-                     'ac-source-functions
-                     'ac-source-variables
-                     'ac-source-dictionary
-                     'ac-source-words-in-all-buffer
-                     'ac-source-files-in-current-dir))
+		    'lisp-mode
+		    'ac-source-semantic
+		    'ac-source-functions
+		    'ac-source-variables
+		    'ac-source-dictionary
+		    'ac-source-words-in-all-buffer
+		    'ac-source-files-in-current-dir))
   (let (source)
     (dolist (source *sources*)
       (add-to-list 'ac-sources source)))
@@ -62,8 +61,8 @@
   (require 'slime)
   (require 'slime-autoloads)
   (slime-setup '(slime-asdf
-                 slime-fancy
-                 slime-indentation))
+		slime-fancy
+		slime-indentation))
   (setq-default slime-net-coding-system 'utf-8-unix))
 
 (setq-default lisp-body-indent 2)
